@@ -52,6 +52,10 @@
       <Project>{b3dc4422-ac69-490d-bdbb-57acb4ce2806}</Project>
       <Name>StackOverflowCloneProject.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StackOverflowCloneProject.ViewModels\StackOverflowCloneProject.ViewModels.csproj">
+      <Project>{5b78edc9-aec2-489a-9f7a-5f9ac277c73d}</Project>
+      <Name>StackOverflowCloneProject.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

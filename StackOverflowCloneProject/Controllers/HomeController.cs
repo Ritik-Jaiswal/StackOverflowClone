@@ -35,5 +35,18 @@ namespace StackOverflowCloneProject.Controllers
         {
             return View();
         }
+
+        public ActionResult Categories()
+        {
+            List<CategoryViewModel> categories = this.cs.GetCategories();
+            return View(categories);
+        }
+
+        [Route("allquestions")]
+        public ActionResult Questions()
+        {
+            List<QuestionViewModel> questions = this.qs.GetQuestions();
+            return View(questions);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using StackOverflowCloneProject.ServiceLayer;
+﻿using StackOverflowCloneProject.CustomFilters;
+using StackOverflowCloneProject.ServiceLayer;
 using StackOverflowCloneProject.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -93,7 +94,7 @@ namespace StackOverflowCloneProject.Controllers
         }
 
 
-        //[UserAuthorizationFilterAttribute]
+        [UserAuthorizationFilterAttribute]
         public ActionResult ChangeProfile()
         {
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
@@ -104,7 +105,7 @@ namespace StackOverflowCloneProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[UserAuthorizationFilterAttribute]
+        [UserAuthorizationFilterAttribute]
         public ActionResult ChangeProfile(EditUserDetailsViewModel eudvm)
         {
             if (ModelState.IsValid)
@@ -131,7 +132,7 @@ namespace StackOverflowCloneProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[UserAuthorizationFilterAttribute]
+        [UserAuthorizationFilterAttribute]
         public ActionResult ChangePassword(EditUserPasswordViewModel eupvm)
         {
             if (ModelState.IsValid)

@@ -1,4 +1,5 @@
-﻿using StackOverflowCloneProject.ServiceLayer;
+﻿using StackOverflowCloneProject.CustomFilters;
+using StackOverflowCloneProject.ServiceLayer;
 using StackOverflowCloneProject.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace StackOverflowCloneProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[UserAuthorizationFilterAttribute]
+        [UserAuthorizationFilterAttribute]
         public ActionResult AddAnswer(NewAnswerViewModel navm)
         {
             navm.UserID = Convert.ToInt32(Session["CurrentUserID"]);

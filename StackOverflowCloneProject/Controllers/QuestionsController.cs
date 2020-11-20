@@ -51,5 +51,50 @@ namespace StackOverflowCloneProject.Controllers
                 return View("View", qvm);
             }
         }
+
+        [HttpPost]
+        public ActionResult EditAnswer(EditAnswerViewModel avm)
+        {
+            if (ModelState.IsValid)
+            {
+                avm.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                this.asr.UpdateAnswer(avm);
+                return RedirectToAction("View", new { id = avm.QuestionID });
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid data");
+                return RedirectToAction("View", new { id = avm.QuestionID });
+            }
+        }
+
+        public ActionResult Create()
+        {
+            List<CategoryViewModel> categories = this.cs.GetCategories();
+            ViewBag.categories = categories;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [UserAuthorizationFilter]
+        public ActionResult Create(NewQuestionViewModel qvm)
+        {
+            if (ModelState.IsValid)
+            {
+                qvm.AnswersCount = 0;
+                qvm.ViewsCount = 0;
+                qvm.VotesCount = 0;
+                qvm.QuestionDateAndTime = DateTime.Now;
+                qvm.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                this.qs.InsertQuestion(qvm);
+                return RedirectToAction("Questions", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid data");
+                return View();
+            }
+        }
     }
 }

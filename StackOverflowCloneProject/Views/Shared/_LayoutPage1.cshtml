@@ -12,9 +12,13 @@
     <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196">
     <link rel="apple-touch-icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
     <link rel="image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
     <meta name="description" content="Stack Overflow is the largest, most trusted online community for developers to learn, share&#x200B; &#x200B;their programming &#x200B;knowledge, and build their careers." />
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0 shrink-to-fit=no">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://stackoverflow.com/" />
     <meta property="og:site_name" content="Stack Overflow" />
@@ -24,17 +28,11 @@
     <meta name="twitter:title" property="og:title" itemprop="name" content="Stack Overflow - Where Developers Learn, Share, &amp; Build Careers" />
     <meta name="twitter:description" property="og:description" itemprop="description" content="Stack Overflow | The World&#x2019;s Largest Online Community for Developers" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.sstatic.net/Js/stub.en.js?v=1057e412d55e"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=6ddbf6f8bec4">
     <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=8cf2d7217e38">
-
-
     <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/Product/product.css?v=6d79cc50f79b">
-
     <link rel="alternate" type="application/atom+xml" title="Feed of recent questions" href="/feeds">
-
     <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/Channels/channels.css?v=abbdda2e119a">
 </head>
 
@@ -42,37 +40,33 @@
     <header class="top-bar js-top-bar top-bar__network _fixed">
         <div class="wmx12 mx-auto grid ai-center h100" role="menubar">
             <div class="-main grid--cell">
-                <a href="/home/index" class="-logo js-gps-track">
+                <a href="/home/index" class="-logo">
                     <span class="-img _glyph">Stack Overflow</span>
                 </a>
             </div>
 
-            <ol class="list-reset grid gs4" role="presentation">
-                <li class="grid--cell md:d-none">
-                    <a href="/home/about" class="-marketing-link js-gps-track"
-                       data-gps-track="top_nav.products.click({location:1, destination:7})"
-                       data-ga="[&quot;top navigation&quot;,&quot;about menu click&quot;,null,null,null]">About</a>
-                </li>
-                <li class="grid--cell md:d-none">
-                    <a href="/home/contact" class="-marketing-link js-gps-track"
-                       data-gps-track="top_nav.products.click({location:1, destination:7})"
-                       data-ga="[&quot;top navigation&quot;,&quot;about menu click&quot;,null,null,null]">Contact</a>
-                </li>
-                <li class="grid--cell">
-                    <a href="#"
-                       class="-marketing-link js-gps-track js-products-menu"
-                       aria-controls="products-popover"
-                       data-controller="s-popover"
-                       data-action="s-popover#toggle"
-                       data-s-popover-placement="bottom"
-                       data-s-popover-toggle-class="is-selected"
-                       data-gps-track="top_nav.products.click({location:1, destination:1})"
-                       data-ga="[&quot;top navigation&quot;,&quot;products menu click&quot;,null,null,null]">
-                        Products
-                    </a>
-                </li>
+            <ol class="list-reset grid gs4">
+                @if (Session["CurrentUserName"] == null)
+                { 
+                    <li class="grid--cell md:d-none">
+                        <a href="/home/about" class="-marketing-link">About</a>
+                    </li>
+                    <li class="grid--cell md:d-none">
+                        <a href="/home/contact" class="-marketing-link">Contact</a>
+                    </li>
+                }
+                @if (Session["CurrentUserName"] != null)
+                {
+
+                    <li class="grid--cell md:d-none">
+                        <a href="/home/categories" class="-marketing-link">Categories</a>
+                    </li>
+
+                    <li class="grid--cell md:d-none">
+                        <a href="/allquestions" class="-marketing-link">Questions</a>
+                    </li>
+                }
             </ol>
-            
 
             <form id="search" role="search" action="/home/search" class="grid--cell fl-grow1 searchbar px12 js-searchbar " autocomplete="off">
                 <div class="ps-relative">
@@ -104,12 +98,10 @@
                 </div>
             </form>
 
-
-
             <ol class="overflow-x-auto ml-auto -secondary grid ai-center list-reset h100 user-logged-out" role="presentation">
                 <li class="-item searchbar-trigger">
-                    <a href="#" class="-link js-searchbar-trigger" role="button" aria-label="Search"
-                       aria-haspopup="true" aria-controls="search" title="Click to show search">
+                    <a href="#" class="-link js-searchbar-trigger" role="button" aria-label="Search" aria-haspopup="true"
+                       aria-controls="search" title="Click to show search">
                         <svg aria-hidden="true" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18">
                             <path d="M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z" />
                         </svg>
@@ -124,49 +116,42 @@
                             Log in
                         </a>
                         <a href="/account/register"
-                           class="login-link s-btn s-btn__primary py8" rel="nofollow" data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">
-                            Sign up
-                        </a>
+                           class="login-link s-btn s-btn__primary py8" rel="nofollow"
+                           data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">Sign up</a>
 
                     </li>
                 }
-
                 @if (Session["CurrentUserName"] != null)
                 {
-                    <li class="grid--cell md:d-none">
-                        <a href="/home/categories" class="-marketing-link js-gps-track"
-                           data-gps-track="top_nav.products.click({location:1, destination:7})"
-                           data-ga="[&quot;top navigation&quot;,&quot;about menu click&quot;,null,null,null]">Categories</a>
-                    </li>
-                    <li class="grid--cell md:d-none">
-                        <a href="/allquestions" class="-marketing-link js-gps-track"
-                           data-gps-track="top_nav.products.click({location:1, destination:7})"
-                           data-ga="[&quot;top navigation&quot;,&quot;about menu click&quot;,null,null,null]">Questions</a>
-                    </li>
+
+                    
                     <li>
                         <a href="/account/logout"
-                           class="login-link s-btn s-btn__primary py8" rel="nofollow" data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">
+                           class="login-link s-btn s-btn__primary py8" rel="nofollow" 
+                           data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">
                             Logout
                         </a>
                     </li>
 
 
+
                     @*<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                    <img src="~/Images/user.png" width="20px" />
-                    @Session["CurrentUserName"]
-                </a>
-                <div class="dropdown-menu bg-info">
-                    <a class="dropdown-item" href="/account/logout">Logout</a>
-                    <a class="dropdown-item" href="/account/changeprofile">Change Profile</a>
-                    <a class="dropdown-item" href="/account/changepassword">Change Password</a>
-                </div>
-            </li>*@
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <img src="~/Images/user.png" width="20px" />
+                            @Session["CurrentUserName"]
+                        </a>
+                        <div class="dropdown-menu bg-info">
+                            <a class="dropdown-item" href="/account/logout">Logout</a>
+                            <a class="dropdown-item" href="/account/changeprofile">Change Profile</a>
+                            <a class="dropdown-item" href="/account/changepassword">Change Password</a>
+                        </div>
+                    </li>*@
                 }
 
             </ol>
         </div>
     </header>
+
     @RenderBody()
 </body>
 </html>

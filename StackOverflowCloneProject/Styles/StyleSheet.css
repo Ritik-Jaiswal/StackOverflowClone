@@ -2,9 +2,6 @@
     background-color: #046475;
 }
 
-#active {
-    color: yellow !important;
-}
 
 .navbar a:link, .navbar a:visited {
     color: white !important;

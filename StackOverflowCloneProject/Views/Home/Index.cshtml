@@ -4,322 +4,548 @@
     ViewBag.Title = "Home";
 }
 
-<div class="wmx100 w100 p-ff-source">
-    <div id="content" class="w100 wmx100 p0 snippet-hidden">
-        <div class="py128 product-hero-background d:fc-white">
-            <h1 class="w90 mx-auto p-ff-roboto-slab-bold fs-display2 ta-center mb16">We <span class="ff-mono">&#x3C;3</span> people who code</h1>
-            <p class="fs-title ta-center w90 wmx4 mx-auto mb24">We build products that empower developers and connect them to solutions that enable productivity, growth, and discovery.</p>
-            <div class="grid jc-center ai-center fs-body2 sm:fd-column">
-                <a class="grid--cell bc-orange-400 ba fc-orange-400 bg-white d:bg-black-900 py12 px24 bar-sm js-scroll-link js-gps-track"
-                   data-gps-track="product_homepage.hero.click({ cta: 'For developers' })"
-                   href="#for-developers" data-ga="[&quot;home page&quot;,&quot;for developers click&quot;,&quot;hero banner&quot;,null,null]">
-                    For developers
-                </a>
-                <a class="grid--cell ml8 sm:ml0 sm:mt8 fc-white d:fc-black-900 bg-orange-400 py12 px24 bar-sm js-scroll-link js-gps-track"
-                   data-gps-track="product_homepage.hero.click({ cta: 'For businesses' })"
-                   href="#for-businesses" data-ga="[&quot;home page&quot;,&quot;for businesses click&quot;,&quot;hero banner&quot;,null,null]">
-                    For businesses
-                </a>
-            </div>
-        </div>
+@if (Session["CurrentUserName"] == null)
+{
+    <div class="wmx100 w100 p-ff-source">
+        <div id="content" class="w100 wmx100 p0 snippet-hidden">
 
-        <div class="py64 ta-center" id="for-developers">
-            <h2 class="w90 mx-auto p-ff-roboto-slab-bold fs-headline2 mb24">For developers, by developers</h2>
-            <div class="w64 h8 bar-pill d-block mb24 bg-orange-400 mx-auto mb16"></div>
-            <p class="ta-center fs-body3 w90 wmx5 mx-auto mb48">
-                Stack Overflow is an open community for anyone that codes. We help you get answers to your toughest coding questions, share knowledge with your coworkers in private, and find your next dream job.
-            </p>
-            <div class="grid grid__allcells4 w90 wmx10 mx-auto ai-start md:fd-column md:ai-center">
-                <div class="grid--cell wmx3 fs-body2 ta-center bs-md bar-lg p32 mt64 md:mt0 md:mb32 h:bs-lg">
-                    <img class="mb16" src="https://cdn.sstatic.net/Img/home/public-qa.svg?v=d82acaa7df9f">
-                    <h4 class="fs-title p-ff-roboto-slab mb16">Public Q&A</h4>
-                    <p class="mb24">
-                        Get answers to more than 16.5 million questions and give back by sharing your knowledge with others.
-                    </p>
-                    
-                </div>
-                <div class="grid--cell wmx3 fs-body2 bs-md bar-lg p32 mr64 ml64 md:mr0 md:ml0 md:mb32 h:bs-lg">
-                    <img class="mb16" src="https://cdn.sstatic.net/Img/home/private-qa.svg?v=2c1de180b6d7">
-                    <h4 class="fs-title p-ff-roboto-slab mb16">Private Q&A</h4>
-                    <p class="mb24">Level up with Stack Overflow while you work. Share knowledge privately with your coworkers using our flagship Q&amp;A engine.</p>
-                    
-                </div>
-                <div class="grid--cell wmx3 fs-body2 bs-md bar-lg p32 mt64 md:mt0 md:mb32 h:bs-lg">
-                    <img class="mb16" src="https://cdn.sstatic.net/Img/home/jobs.svg?v=931d6c0863ee">
-                    <h4 class="fs-title p-ff-roboto-slab mb16">Browse jobs</h4>
-                    <p class="mb24">Find the right job through high quality listings and search for roles based on title, technology stack, salary, location, and more.</p>
-                    
+            <div class="py128 product-hero-background d:fc-white">
+                <h1 class="w90 mx-auto p-ff-roboto-slab-bold fs-display2 ta-center mb16">We <span class="ff-mono">&#x3C;3</span> people who code</h1>
+                <p class="fs-title ta-center w90 wmx4 mx-auto mb24">We build products that empower developers and connect them to solutions that enable productivity, growth, and discovery.</p>
+                <div class="grid jc-center ai-center fs-body2 sm:fd-column">
+                    <a class="grid--cell bc-orange-400 ba fc-orange-400 bg-white d:bg-black-900 py12 px24 bar-sm js-scroll-link js-gps-track"
+                       data-gps-track="product_homepage.hero.click({ cta: 'For developers' })"
+                       href="#for-developers" data-ga="[&quot;home page&quot;,&quot;for developers click&quot;,&quot;hero banner&quot;,null,null]">
+                        For developers
+                    </a>
+                    <a class="grid--cell ml8 sm:ml0 sm:mt8 fc-white d:fc-black-900 bg-orange-400 py12 px24 bar-sm js-scroll-link js-gps-track"
+                       data-gps-track="product_homepage.hero.click({ cta: 'For businesses' })"
+                       href="#for-businesses" data-ga="[&quot;home page&quot;,&quot;for businesses click&quot;,&quot;hero banner&quot;,null,null]">
+                        For businesses
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="py128 p-bg-purple-light d:bg-black-025 fs-body3" id="for-businesses">
-            <h2 class="mx-auto w90 ta-center p-ff-roboto-slab-bold fs-headline2 mb24">For businesses, by developers</h2>
-            <div class="w64 h8 bar-pill d-block mb24 bg-orange-400 mx-auto mb16"></div>
-            <p class="ta-center mb64 fs-body3 w90 wmx6 mx-auto">Our mission is to help developers write the script of the future. This means helping you find and hire skilled developers for your business and providing them the tools they need to share knowledge and work effectively.</p>
-            <div class="grid grid__allcells4 mx-auto w90 wmx12 md:fd-column md:ai-center">
-                <div class="grid grid__center wmx4 bg-white bar-lg bs-md p32 md:mb32 lg:fd-column md:fd-row">
-                    <div class="grid--cell mr16 lg:mb16 md:mb0">
-                        <img class="d-block" src="https://cdn.sstatic.net/Img/home/private-questions.svg?v=a4f1cfb08f7e" width="76">
+            <div class="py64 ta-center" id="for-developers">
+                <h2 class="w90 mx-auto p-ff-roboto-slab-bold fs-headline2 mb24">For developers, by developers</h2>
+                <div class="w64 h8 bar-pill d-block mb24 bg-orange-400 mx-auto mb16"></div>
+                <p class="ta-center fs-body3 w90 wmx5 mx-auto mb48">
+                    Stack Overflow is an open community for anyone that codes. We help you get answers to your toughest coding questions, share knowledge with your coworkers in private, and find your next dream job.
+                </p>
+                <div class="grid grid__allcells4 w90 wmx10 mx-auto ai-start md:fd-column md:ai-center">
+                    <div class="grid--cell wmx3 fs-body2 ta-center bs-md bar-lg p32 mt64 md:mt0 md:mb32 h:bs-lg">
+                        <img class="mb16" src="https://cdn.sstatic.net/Img/home/public-qa.svg?v=d82acaa7df9f">
+                        <h4 class="fs-title p-ff-roboto-slab mb16">Public Q&A</h4>
+                        <p class="mb24">
+                            Get answers to more than 16.5 million questions and give back by sharing your knowledge with others.
+                        </p>
+
                     </div>
-                    <p class="grid--cell mb0 wmx2">
-                        Quickly find and share internal knowledge with Private Q&amp;A
-                    </p>
-                </div>
-                <div class="grid grid__center wmx4 bg-white bar-lg bs-md p32 ml48 mr48 md:ml0 md:mr0 md:mb32 lg:fd-column md:fd-row">
-                    <div class="grid--cell mr16 lg:mb16 md:mb0">
-                        <img class="d-block" src="https://cdn.sstatic.net/Img/home/find-candidate.svg?v=9099aa106ad3" width="76">
+                    <div class="grid--cell wmx3 fs-body2 bs-md bar-lg p32 mr64 ml64 md:mr0 md:ml0 md:mb32 h:bs-lg">
+                        <img class="mb16" src="https://cdn.sstatic.net/Img/home/private-qa.svg?v=2c1de180b6d7">
+                        <h4 class="fs-title p-ff-roboto-slab mb16">Private Q&A</h4>
+                        <p class="mb24">Level up with Stack Overflow while you work. Share knowledge privately with your coworkers using our flagship Q&amp;A engine.</p>
+
                     </div>
-                    <p class="grid--cell mb0 wmx2">
-                        Find the perfect candidate for your growing technical team with Talent solutions
-                    </p>
-                </div>
-                <div class="grid grid__center wmx4 bg-white bar-lg bs-md p32 lg:fd-column md:fd-row">
-                    <div class="grid--cell mr16 lg:mb16 md:mb0">
-                        <img class="d-block" src="https://cdn.sstatic.net/Img/home/accelerate.svg?v=9d4c2786ff02" width="76">
+                    <div class="grid--cell wmx3 fs-body2 bs-md bar-lg p32 mt64 md:mt0 md:mb32 h:bs-lg">
+                        <img class="mb16" src="https://cdn.sstatic.net/Img/home/jobs.svg?v=931d6c0863ee">
+                        <h4 class="fs-title p-ff-roboto-slab mb16">Browse jobs</h4>
+                        <p class="mb24">Find the right job through high quality listings and search for roles based on title, technology stack, salary, location, and more.</p>
+
                     </div>
-                    <p class="grid--cell mb0 wmx2">
-                        Accelerate the discovery of your products or services through our Advertising platform
-                    </p>
                 </div>
             </div>
-        </div>
 
-        <div class="p-bg-purple-light d:bg-black-025 py128">
-            <div class="grid grid__allcells6 w90 wmx10 mx-auto sm:fd-column">
-                <div class="grid fd-column mr64 sm:mr0 sm:mb64">
-                    <div class="grid--cell">
-                        <img class="d-block mb6" src="https://cdn.sstatic.net/Img/home/find-candidate.svg?v=9099aa106ad3" width="76">
+            <div class="py128 p-bg-purple-light d:bg-black-025 fs-body3" id="for-businesses">
+                <h2 class="mx-auto w90 ta-center p-ff-roboto-slab-bold fs-headline2 mb24">For businesses, by developers</h2>
+                <div class="w64 h8 bar-pill d-block mb24 bg-orange-400 mx-auto mb16"></div>
+                <p class="ta-center mb64 fs-body3 w90 wmx6 mx-auto">Our mission is to help developers write the script of the future. This means helping you find and hire skilled developers for your business and providing them the tools they need to share knowledge and work effectively.</p>
+                <div class="grid grid__allcells4 mx-auto w90 wmx12 md:fd-column md:ai-center">
+                    <div class="grid grid__center wmx4 bg-white bar-lg bs-md p32 md:mb32 lg:fd-column md:fd-row">
+                        <div class="grid--cell mr16 lg:mb16 md:mb0">
+                            <img class="d-block" src="https://cdn.sstatic.net/Img/home/private-questions.svg?v=a4f1cfb08f7e" width="76">
+                        </div>
+                        <p class="grid--cell mb0 wmx2">
+                            Quickly find and share internal knowledge with Private Q&amp;A
+                        </p>
                     </div>
-                    <h4 class="grid--cell p-ff-roboto-slab-bold fs-headline1 mb12">Hire your technical talent</h4>
-                    <p class="grid--cell fs-body2 mb24">We help expand your technical hiring strategy to promote your employer brand and highlight relevant open roles to our community of over 100 million developers and technologists.</p>
-                    
+                    <div class="grid grid__center wmx4 bg-white bar-lg bs-md p32 ml48 mr48 md:ml0 md:mr0 md:mb32 lg:fd-column md:fd-row">
+                        <div class="grid--cell mr16 lg:mb16 md:mb0">
+                            <img class="d-block" src="https://cdn.sstatic.net/Img/home/find-candidate.svg?v=9099aa106ad3" width="76">
+                        </div>
+                        <p class="grid--cell mb0 wmx2">
+                            Find the perfect candidate for your growing technical team with Talent solutions
+                        </p>
+                    </div>
+                    <div class="grid grid__center wmx4 bg-white bar-lg bs-md p32 lg:fd-column md:fd-row">
+                        <div class="grid--cell mr16 lg:mb16 md:mb0">
+                            <img class="d-block" src="https://cdn.sstatic.net/Img/home/accelerate.svg?v=9d4c2786ff02" width="76">
+                        </div>
+                        <p class="grid--cell mb0 wmx2">
+                            Accelerate the discovery of your products or services through our Advertising platform
+                        </p>
+                    </div>
                 </div>
-                <div class="grid fd-column">
-                    <div class="grid--cell">
-                        <img class="d-block mb6" src="https://cdn.sstatic.net/Img/home/accelerate.svg?v=9d4c2786ff02" width="76">
+            </div>
+
+            <div class="p-bg-purple-light d:bg-black-025 py128">
+                <div class="grid grid__allcells6 w90 wmx10 mx-auto sm:fd-column">
+                    <div class="grid fd-column mr64 sm:mr0 sm:mb64">
+                        <div class="grid--cell">
+                            <img class="d-block mb6" src="https://cdn.sstatic.net/Img/home/find-candidate.svg?v=9099aa106ad3" width="76">
+                        </div>
+                        <h4 class="grid--cell p-ff-roboto-slab-bold fs-headline1 mb12">Hire your technical talent</h4>
+                        <p class="grid--cell fs-body2 mb24">We help expand your technical hiring strategy to promote your employer brand and highlight relevant open roles to our community of over 100 million developers and technologists.</p>
+
                     </div>
-                    <h4 class="grid--cell p-ff-roboto-slab-bold fs-headline1 mb12">Reach developers worldwide</h4>
-                    <p class="grid--cell fs-body2 mb24">Use the world’s largest resource for people who code to help you increase awareness and showcase your product or service across Stack Overflow’s network of Q&amp;A sites.</p>
-                    <div class="grid--cell mt-auto">
+                    <div class="grid fd-column">
+                        <div class="grid--cell">
+                            <img class="d-block mb6" src="https://cdn.sstatic.net/Img/home/accelerate.svg?v=9d4c2786ff02" width="76">
+                        </div>
+                        <h4 class="grid--cell p-ff-roboto-slab-bold fs-headline1 mb12">Reach developers worldwide</h4>
+                        <p class="grid--cell fs-body2 mb24">Use the world’s largest resource for people who code to help you increase awareness and showcase your product or service across Stack Overflow’s network of Q&amp;A sites.</p>
+                        <div class="grid--cell mt-auto">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py64">
+                <h3 class="w90 mx-auto ta-center p-ff-roboto-slab-bold fs-headline2 mb24">Questions are everywhere, answers are on Stack Overflow</h3>
+                <div class="p-divider mb32"></div>
+                <div class="w90 wmx10 mx-auto">
+                    <div id="tour" class="grid ai-start md:ai-center md:fd-column md:ta-center">
+                        <div class="tour--controls grid fd-column md:fd-row md:w100 grid--cell3 mt48 md:mt0">
+                            <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
+
+                                <div class="grid--cell mr8 md:mr0 md:mb8">
+                                    <img src="https://cdn.sstatic.net/Img/home/ask-a-question.svg?v=f4f2050b0297" class="d-block" width="46">
+                                </div>
+                                <span class="grid--cell">Ask a question</span>
+
+                            </label>
+                            <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
+                                <div class="grid--cell mr8 md:mr0 md:mb8">
+                                    <img src="https://cdn.sstatic.net/Img/home/votes.svg?v=748a8f48a8e2" class="d-block" width="46">
+                                </div>
+                                <span class="grid--cell">Vote on everything</span>
+
+                            </label>
+                            <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
+                                <div class="grid--cell mr8 md:mr0 md:mb8">
+                                    <img src="https://cdn.sstatic.net/Img/home/answer.svg?v=4cd8048a676c" class="d-block" width="46">
+                                </div>
+                                <span class="grid--cell">Answer questions</span>
+
+                            </label>
+                        </div>
+                        <div class="tour--controls tour--controls__right grid fd-column md:fd-row md:w100 grid--cell3 mt48 md:mt0 order-last">
+                            <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
+                                <div class="grid--cell mr8 md:mr0 md:mb8">
+                                    <img src="https://cdn.sstatic.net/Img/home/tags.svg?v=913379eb09eb" class="d-block" width="46">
+                                </div>
+                                <span class="grid--cell">Tag your question</span>
+
+                            </label>
+                            <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
+                                <div class="grid--cell mr8 md:mr0 md:mb8">
+                                    <img src="https://cdn.sstatic.net/Img/home/accept.svg?v=27d5be078970" class="d-block" width="46">
+                                </div>
+                                <span class="grid--cell">Accept an answer</span>
+
+                            </label>
+                            <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
+                                <div class="grid--cell mr8 md:mr0 md:mb8">
+                                    <img src="https://cdn.sstatic.net/Img/home/get-recognized.svg?v=3b339d9aa10c" class="d-block" width="46">
+                                </div>
+                                <span class="grid--cell">Get recognized</span>
+
+                            </label>
+                        </div>
+
+                        <div class="grid--cell6 ta-center m24 md:ml0 md:mr0 md:order-last">
+                            <div class="tour--item wmx5 s-expandable" id="tour-ask">
+                                <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-ask.svg?v=b6cd07f0765a" class="d-block wmx100">
+                                <h4 class="mt24 p-ff-roboto-slab fs-title">
+                                    Ask a question publicly on 170+ Stack Exchange sites or privately using Stack Overflow for Teams.
+                                </h4>
+                            </div>
+                            <div class="tour--item wmx5 s-expandable" id="tour-vote">
+                                <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-vote.svg?v=9d2eb0efdc17" class="d-block wmx100">
+                                <h4 class="mt24 p-ff-roboto-slab fs-title">
+                                    Upvoting helps exceptional content rise to the top and bring awareness to useful responses.
+                                </h4>
+                            </div>
+                            <div class="tour--item wmx5 s-expandable" id="tour-answer">
+                                <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-answer.svg?v=b637b99bc32a" class="d-block wmx100">
+                                <h4 class="mt24 p-ff-roboto-slab fs-title">
+                                    Answer a question to share your knowledge with the world or in private with your team.
+                                </h4>
+                            </div>
+                            <div class="tour--item wmx5 s-expandable" id="tour-tag">
+                                <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-tags.svg?v=0655cbe6bffa" class="d-block wmx100">
+                                <h4 class="mt24 p-ff-roboto-slab fs-title">
+                                    Tags help make information searchable and find answers that are important to you.
+                                </h4>
+                            </div>
+                            <div class="tour--item wmx5 s-expandable" id="tour-accept">
+                                <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-accept.svg?v=f2be4b8dfdac" class="d-block wmx100">
+                                <h4 class="mt24 p-ff-roboto-slab fs-title">
+                                    Accept the answer which solved your problem to let others benefit from the valuable information.
+                                </h4>
+                            </div>
+                            <div class="tour--item wmx5 s-expandable" id="tour-recognized">
+                                <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-recognize.svg?v=4f011d7173e8" class="d-block wmx100">
+                                <h4 class="mt24 p-ff-roboto-slab fs-title">
+                                    Our reputation system rewards both the new & experienced based on contribution and activity.
+                                </h4>
+                            </div>
+
+                            <a class="mt24 fs-body2 d-inline-block fc-white bg-orange-400 py12 px24 bar-sm js-gps-track"
+                               data-gps-track="product_homepage.tour.click({ action: 'CreateAccount' })"
+                               href="/account/register"
+                               data-ga="[&quot;home page&quot;,&quot;create an account click&quot;,&quot;how it works section&quot;,null,null]">Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py128 fs-body2">
+                <h3 class="w90 mx-auto ta-center p-ff-roboto-slab-bold fs-headline2 mb24">Learn and grow with Stack Overflow</h3>
+                <div class="p-divider mb64"></div>
+                <div class="mx-auto w90 wmx12 grid grid__allcells6 md:fd-column">
+                    <div class="grid grid__allcells6 mr32 md:mr0 md:mb64 md:jc-center sm:fd-column sm:ai-center sm:mb48">
+                        <div class="grid--cell wmx3 mr32 md:mr48 md:ta-center md:pl24 md:pr24 sm:mr0 sm:mb48 sm:pl0 sm:pr0">
+                            <img class="mb16 wmx100" width="175" height="151" src="https://cdn.sstatic.net/Img/home/developer.svg?v=b930de7967a7">
+                            <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Write the script of the future</h4>
+                            <p>
+                                Get your coding questions answered to learn, build, and level up whether you’re beginning with JavaScript or a React professional.
+                            </p>
+                        </div>
+                        <div class="grid--cell wmx3 md:ta-center md:pl24 md:pr24 sm:pl0 sm:pr0">
+                            <img class="mb16 wmx100" width="169" height="151" src="https://cdn.sstatic.net/Img/home/open-source.svg?v=847b604fd2ab">
+                            <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Support open source</h4>
+                            <p>
+                                Reach users of your project by following tags, answering newcomer questions, and empowering experts in the community.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid__allcells6 md:jc-center sm:fd-column sm:ai-center">
+                        <div class="grid--cell wmx3 mr32 md:mr48 md:ta-center md:pl24 md:pr24 sm:mr0 sm:mb48 sm:pl0 sm:pr0">
+                            <img class="mb16 wmx100" width="176" height="151" src="https://cdn.sstatic.net/Img/home/advocate.svg?v=4b03cfb93502">
+                            <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Acquire and share knowledge</h4>
+                            <p>
+                                Answer questions and gain insights from an audience of developers using your technology on Stack Overflow.
+                            </p>
+                        </div>
+                        <div class="grid--cell wmx3 md:ta-center md:pl24 md:pr24">
+                            <img class="mb16 wmx100" width="209" height="151" src="https://cdn.sstatic.net/Img/home/career-switcher.svg?v=a41416ff19df">
+                            <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Find career opportunities</h4>
+                            <p>
+                                Create a profile that shows off your expertise and credentials to help you make your next move. Start your Developer Story.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+
+@if (Session["CurrentUserName"] != null)
+{
+    <div class="container">
+
+
+
+        <div id="left-sidebar" data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar ps-relative">
+            <div class="left-sidebar--sticky-container js-sticky-leftnav">
+                <nav role="navigation">
+                    <ol class="nav-links">
+                        <li class=" youarehere">
+                            <a href="/"
+                               class="pl8 js-gps-track nav-links--link"
+                               data-gps-track="top_nav.click({is_current:true, location:1, destination:8})">
+                                <div class="grid ai-center">
+                                    <div class="grid--cell truncate">
+                                        Home
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <ol class="nav-links">
+                                <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Public</li>
+
+                                <li class="">
+                                    <a id="nav-questions"
+                                       href="/"
+                                       class="pl8 js-gps-track nav-links--link -link__with-icon"
+                                       data-gps-track="top_nav.click({is_current:false, location:1, destination:1})">
+                                        <svg aria-hidden="true" class="svg-icon iconGlobe" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 100 16A8 8 0 009 1zM8 15.32a6.4 6.4 0 01-5.23-7.75L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.4 6.4 0 012.32 10.24v.01z" /></svg>                    <span class="-link--channel-name">Stack Overflow</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="">
+                                    <a id="nav-tags"
+                                       href="/"
+                                       class=" js-gps-track nav-links--link"
+                                       data-gps-track="top_nav.click({is_current:false, location:1, destination:2})">
+                                        <div class="grid ai-center">
+                                            <div class="grid--cell truncate">
+                                                Tags
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a id="nav-users"
+                                       href="/"
+                                       class=" js-gps-track nav-links--link"
+                                       data-gps-track="top_nav.click({is_current:false, location:1, destination:3})">
+                                        <div class="grid ai-center">
+                                            <div class="grid--cell truncate">
+                                                Users
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Find a Job</li>
+                                <li class="">
+                                    <a id="nav-jobs"
+                                       href="/"
+                                       class=" js-gps-track nav-links--link"
+                                       data-gps-track="top_nav.click({is_current:false, location:1, destination:6})">
+                                        <div class="grid ai-center">
+                                            <div class="grid--cell truncate">
+                                                Jobs
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a id="nav-companies"
+                                       href="/"
+                                       class=" js-gps-track nav-links--link"
+                                       data-gps-track="top_nav.click({is_current:false, location:1, destination:12})">
+                                        <div class="grid ai-center">
+                                            <div class="grid--cell truncate">
+                                                Companies
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ol>
+                        </li>
                         
-                    </div>
-                </div>
+                    </ol>
+                </nav>
             </div>
         </div>
+        <div id="content" class="snippet-hidden">
 
-        <div class="py64">
-            <h3 class="w90 mx-auto ta-center p-ff-roboto-slab-bold fs-headline2 mb24">Questions are everywhere, answers are on Stack Overflow</h3>
-            <div class="p-divider mb32"></div>
-            <div class="w90 wmx10 mx-auto">
-                <div id="tour" class="grid ai-start md:ai-center md:fd-column md:ta-center">
-                    <div class="tour--controls grid fd-column md:fd-row md:w100 grid--cell3 mt48 md:mt0">
-                        <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
-                            
-                            <div class="grid--cell mr8 md:mr0 md:mb8">
-                                <img src="https://cdn.sstatic.net/Img/home/ask-a-question.svg?v=f4f2050b0297" class="d-block" width="46">
-                            </div>
-                            <span class="grid--cell">Ask a question</span>
-                            
-                        </label>
-                        <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
-                            <div class="grid--cell mr8 md:mr0 md:mb8">
-                                <img src="https://cdn.sstatic.net/Img/home/votes.svg?v=748a8f48a8e2" class="d-block" width="46">
-                            </div>
-                            <span class="grid--cell">Vote on everything</span>
-                            
-                        </label>
-                        <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
-                            <div class="grid--cell mr8 md:mr0 md:mb8">
-                                <img src="https://cdn.sstatic.net/Img/home/answer.svg?v=4cd8048a676c" class="d-block" width="46">
-                            </div>
-                            <span class="grid--cell">Answer questions</span>
-                            
-                        </label>
-                    </div>
-                    <div class="tour--controls tour--controls__right grid fd-column md:fd-row md:w100 grid--cell3 mt48 md:mt0 order-last">
-                        <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
-                            <div class="grid--cell mr8 md:mr0 md:mb8">
-                                <img src="https://cdn.sstatic.net/Img/home/tags.svg?v=913379eb09eb" class="d-block" width="46">
-                            </div>
-                            <span class="grid--cell">Tag your question</span>
-                            
-                        </label>
-                        <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
-                            <div class="grid--cell mr8 md:mr0 md:mb8">
-                                <img src="https://cdn.sstatic.net/Img/home/accept.svg?v=27d5be078970" class="d-block" width="46">
-                            </div>
-                            <span class="grid--cell">Accept an answer</span>
-                            
-                        </label>
-                        <label class="grid ai-center md:fd-column p12 md:w33 ps-relative fs-body3 p-ff-source c-pointer h:bs-md bar-md ba bc-transparent us-none">
-                            <div class="grid--cell mr8 md:mr0 md:mb8">
-                                <img src="https://cdn.sstatic.net/Img/home/get-recognized.svg?v=3b339d9aa10c" class="d-block" width="46">
-                            </div>
-                            <span class="grid--cell">Get recognized</span>
-                            
-                        </label>
-                    </div>
+            <div class="grid">
+                <h1 class="grid--cell fl1 fs-headline1">
+                    Top Questions
+                </h1>
+                <div class="ml12 aside-cta grid--cell ">
+                    <a href="/questions/create" class="ws-nowrap s-btn s-btn__primary">
+                        Ask Question
+                    </a>
 
-                    <div class="grid--cell6 ta-center m24 md:ml0 md:mr0 md:order-last">
-                        <div class="tour--item wmx5 s-expandable" id="tour-ask">
-                            <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-ask.svg?v=b6cd07f0765a" class="d-block wmx100">
-                            <h4 class="mt24 p-ff-roboto-slab fs-title">
-                                Ask a question publicly on 170+ Stack Exchange sites or privately using Stack Overflow for Teams.
-                            </h4>
-                        </div>
-                        <div class="tour--item wmx5 s-expandable" id="tour-vote">
-                            <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-vote.svg?v=9d2eb0efdc17" class="d-block wmx100">
-                            <h4 class="mt24 p-ff-roboto-slab fs-title">
-                                Upvoting helps exceptional content rise to the top and bring awareness to useful responses.
-                            </h4>
-                        </div>
-                        <div class="tour--item wmx5 s-expandable" id="tour-answer">
-                            <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-answer.svg?v=b637b99bc32a" class="d-block wmx100">
-                            <h4 class="mt24 p-ff-roboto-slab fs-title">
-                                Answer a question to share your knowledge with the world or in private with your team.
-                            </h4>
-                        </div>
-                        <div class="tour--item wmx5 s-expandable" id="tour-tag">
-                            <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-tags.svg?v=0655cbe6bffa" class="d-block wmx100">
-                            <h4 class="mt24 p-ff-roboto-slab fs-title">
-                                Tags help make information searchable and find answers that are important to you.
-                            </h4>
-                        </div>
-                        <div class="tour--item wmx5 s-expandable" id="tour-accept">
-                            <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-accept.svg?v=f2be4b8dfdac" class="d-block wmx100">
-                            <h4 class="mt24 p-ff-roboto-slab fs-title">
-                                Accept the answer which solved your problem to let others benefit from the valuable information.
-                            </h4>
-                        </div>
-                        <div class="tour--item wmx5 s-expandable" id="tour-recognized">
-                            <img width="500" src="https://cdn.sstatic.net/Img/home/illo-feats-recognize.svg?v=4f011d7173e8" class="d-block wmx100">
-                            <h4 class="mt24 p-ff-roboto-slab fs-title">
-                                Our reputation system rewards both the new & experienced based on contribution and activity.
-                            </h4>
-                        </div>
-
-                        <a class="mt24 fs-body2 d-inline-block fc-white bg-orange-400 py12 px24 bar-sm js-gps-track"
-                           data-gps-track="product_homepage.tour.click({ action: 'CreateAccount' })"
-                           href="/account/register"
-                           data-ga="[&quot;home page&quot;,&quot;create an account click&quot;,&quot;how it works section&quot;,null,null]">Create an account</a>
-                    </div>
                 </div>
             </div>
-        </div>
+            <div class="grid ai-center mb16">
+                <div class="grid--cell fl1 fs-body3"></div>
+                <div class="grid--cell">
+                    <div class=" grid s-btn-group js-filter-btn">
+                        <a class="youarehere is-selected grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions that may be of interest to you based on your history and tag preference" data-value="interesting" data-shortcut="">
+                            Interesting
+                        </a>
+                        <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with an active bounty" data-value="bounties" data-shortcut="B">
+                            Bountied
+                        </a>
+                        <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with the most views, answers, and votes over the last few days" data-value="hot" data-shortcut="H">
+                            Hot
+                        </a>
+                        <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with the most views, answers, and votes this week" data-value="week" data-shortcut="W">
+                            Week
+                        </a>
+                        <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with the most views, answers, and votes this month" data-value="month" data-shortcut="M">
+                            Month
+                        </a>
+                    </div>
 
-        <div class="py128 fs-body2">
-            <h3 class="w90 mx-auto ta-center p-ff-roboto-slab-bold fs-headline2 mb24">Learn and grow with Stack Overflow</h3>
-            <div class="p-divider mb64"></div>
-            <div class="mx-auto w90 wmx12 grid grid__allcells6 md:fd-column">
-                <div class="grid grid__allcells6 mr32 md:mr0 md:mb64 md:jc-center sm:fd-column sm:ai-center sm:mb48">
-                    <div class="grid--cell wmx3 mr32 md:mr48 md:ta-center md:pl24 md:pr24 sm:mr0 sm:mb48 sm:pl0 sm:pr0">
-                        <img class="mb16 wmx100" width="175" height="151" src="https://cdn.sstatic.net/Img/home/developer.svg?v=b930de7967a7">
-                        <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Write the script of the future</h4>
-                        <p>
-                            Get your coding questions answered to learn, build, and level up whether you’re beginning with JavaScript or a React professional.
-                        </p>
-                    </div>
-                    <div class="grid--cell wmx3 md:ta-center md:pl24 md:pr24 sm:pl0 sm:pr0">
-                        <img class="mb16 wmx100" width="169" height="151" src="https://cdn.sstatic.net/Img/home/open-source.svg?v=847b604fd2ab">
-                        <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Support open source</h4>
-                        <p>
-                            Reach users of your project by following tags, answering newcomer questions, and empowering experts in the community.
-                        </p>
-                    </div>
-                </div>
-                <div class="grid grid__allcells6 md:jc-center sm:fd-column sm:ai-center">
-                    <div class="grid--cell wmx3 mr32 md:mr48 md:ta-center md:pl24 md:pr24 sm:mr0 sm:mb48 sm:pl0 sm:pr0">
-                        <img class="mb16 wmx100" width="176" height="151" src="https://cdn.sstatic.net/Img/home/advocate.svg?v=4b03cfb93502">
-                        <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Acquire and share knowledge</h4>
-                        <p>
-                            Answer questions and gain insights from an audience of developers using your technology on Stack Overflow.
-                        </p>
-                    </div>
-                    <div class="grid--cell wmx3 md:ta-center md:pl24 md:pr24">
-                        <img class="mb16 wmx100" width="209" height="151" src="https://cdn.sstatic.net/Img/home/career-switcher.svg?v=a41416ff19df">
-                        <h4 class="p-ff-roboto-slab-bold fs-subheading mb16">Find career opportunities</h4>
-                        <p>
-                            Create a profile that shows off your expertise and credentials to help you make your next move. Start your Developer Story.
-                        </p>
-                    </div>
                 </div>
             </div>
+            <div id="qlist-wrapper" class="flush-left">
+                <div id="question-mini-list">
+                    <table class="table">
+                        @foreach (var item in Model)
+                        {
+                            Html.RenderPartial("Question", item);
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+            <br class="cbt" />
+            <h2 class="bottom-notice" data-loc="2">Looking for more? Browse the <a href="/allquestions">complete list of questions</a>, or <a href="/tags">popular tags</a>. Help us answer <a href="/unanswered">unanswered questions</a>.</h2>
+
         </div>
-        <style>
-            .tour--controls {
-                font-size: 0;
-            }
+        <div id="sidebar">
+            
+            <div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
+                <ul class="d-block p0 m0">
+                    <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                        The Overflow Blog
+                    </div>
+                    <li class="s-sidebarwidget--item grid px16">
+                        <div class="grid--cell1 fl-shrink0">
+                            <svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z" /></svg>
+                        </div>
+                        <div class="grid--cell">
+                            <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/12/03/tips-to-stay-focused-and-finish-your-hobby-project/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 0 })">Tips to stay focused and finish your hobby project</a>
+                        </div>
+                    </li>
+                    <li class="s-sidebarwidget--item grid px16">
+                        <div class="grid--cell1 fl-shrink0">
+                            <svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z" /></svg>
+                        </div>
+                        <div class="grid--cell">
+                            <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/12/04/podcast-292-goodbye-to-flash-well-see-you-in-rust/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 1 })">Podcast 292: Goodbye to Flash, we’ll see you in Rust</a>
+                        </div>
+                    </li>
+                    <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                        Featured on Meta
+                    </div>
+                    <li class="s-sidebarwidget--item grid px16">
+                        <div class="grid--cell1 fl-shrink0">
+                            <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                        </div>
+                        <div class="grid--cell">
+                            <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/356997/feature-preview-table-support&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 3, position: 2 })">Feature Preview: Table Support</a>
+                        </div>
+                    </li>
+                    <li class="s-sidebarwidget--item grid px16">
+                        <div class="grid--cell1 fl-shrink0">
+                            <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                        </div>
+                        <div class="grid--cell">
+                            <a href="/" class="js-gps-track" title="MAINTENANCE WARNING: Possible downtime early morning Dec 2, 4, and 9 UTC (8:30PM NYC-time on Dec 1, 3, and 8, 2020)" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/357034/maintenance-warning-possible-downtime-early-morning-dec-2-4-and-9-utc-830pm&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 3, position: 3 })">MAINTENANCE WARNING: Possible downtime early morning Dec 2, 4, and 9 UTC&hellip;</a>
+                        </div>
+                    </li>
+                    <li class="s-sidebarwidget--item grid px16">
+                        <div class="grid--cell1 fl-shrink0">
+                            <div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+                        </div>
+                        <div class="grid--cell">
+                            <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackoverflow.com/questions/403218/congratulations-vonc-for-reaching-a-million-reputation&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 6, position: 4 })">Congratulations VonC for reaching a million reputation</a>
+                        </div>
+                    </li>
+                    <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                        Hot Meta Posts
+                    </div>
+                    <li class="s-sidebarwidget--item grid px16">
+                        <div class="grid--cell1 fl-shrink0">
+                            <span class="fc-black-500" title="Vote score (upvotes - downvotes)">32</span>
+                        </div>
+                        <div class="grid--cell">
+                            <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Hot Meta Posts&quot;,&quot;https://meta.stackoverflow.com/questions/403357/what-can-i-do-to-ask-better-questions-on-meta&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 7, position: 5 })">What can I do to ask better questions on Meta?</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-            .tour--item {
-                display: none;
-            }
+            <div class="s-sidebarwidget mb16 module" data-controller="se-uql-list">
+                <div class="s-sidebarwidget--header">Custom Filters</div>
+                <ul class="s-sidebarwidget--content s-sidebarwidget__items">
+                    <li class="s-sidebarwidget--item fc-black-300">
+                        <a class="s-btn s-btn__link" data-action="se-uql-list#editCurrent" href="/">Create a custom filter</a>
+                    </li>
+                </ul>
+            </div>
 
-                .tour--item.is-expanded {
-                    display: block;
-                }
-            .tour--arrow {
-                position: absolute;
-                top: 0;
-                left: 100%;
-                height: 100%;
-                overflow: hidden;
-                width: 16px;
-            }
+            <div class="js-sidebar-zone" style="min-height: 735px;">
+                <style>
+                </style>
+                <div class="js-zone-container zone-container-sidebar">
+                    <div id="dfp-tsb" class="everyonelovesstackoverflow everyoneloves__top-sidebar"></div>
+                    <div class="js-report-ad-button-container " style="width: 300px"></div>
+                </div>
 
-            .tour--controls__right .tour--arrow {
-                left: auto;
-                right: 100%;
-            }
-
-            .tour--arrow:after {
-                position: absolute;
-                top: 50%;
-                left: -100%;
-                content: '';
-                width: 16px;
-                height: 16px;
-                background-color: #fff;
-                border: 1px solid #d6d9dc;
-                box-shadow: 2px 0 8px rgba(59, 64, 69, .1);
-                transform: translateY(-50%) translateX(-50%) rotate(45deg);
-                transition: all 0.2s;
-            }
-
-            body.theme-dark .tour--arrow:after {
-                background: #f2f2f3;
-            }
-
-            .tour--controls__right .tour--arrow:after {
-                box-shadow: -2px 0 8px rgba(59, 64, 69, .1);
-                left: 200%;
-            }
-
-            .is-active .tour--arrow:after {
-                left: 0;
-            }
-
-            .tour--controls__right .is-active .tour--arrow:after {
-                left: 100%;
-            }
-        </style>
+                <div class="js-zone-container zone-container-sidebar">
+                    <div id="dfp-msb" class="everyonelovesstackoverflow everyoneloves__mid-sidebar"></div>
+                    <div class="js-report-ad-button-container " style="width: 300px"></div>
+                </div>
+            </div>
+  
+        </div>
     </div>
-</div>
+}
+<style>
+    .tour--controls {
+        font-size: 0;
+    }
 
-<div class="row">
-    <div class="col-sm-12">
-        <table class="table">
-            @foreach (var item in Model)
-            {
-                Html.RenderPartial("Question", item);
-            }
-        </table>
-        @if (Session["CurrentUserName"] != null)
-        {
-            <a href="/questions/create" class="btn btn-primary">Add Question</a>
+    .tour--item {
+        display: none;
+    }
+
+        .tour--item.is-expanded {
+            display: block;
         }
-    </div>
-</div>
+
+    .tour--arrow {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        height: 100%;
+        overflow: hidden;
+        width: 16px;
+    }
+
+    .tour--controls__right .tour--arrow {
+        left: auto;
+        right: 100%;
+    }
+
+    .tour--arrow:after {
+        position: absolute;
+        top: 50%;
+        left: -100%;
+        content: '';
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        border: 1px solid #d6d9dc;
+        box-shadow: 2px 0 8px rgba(59, 64, 69, .1);
+        transform: translateY(-50%) translateX(-50%) rotate(45deg);
+        transition: all 0.2s;
+    }
+
+    body.theme-dark .tour--arrow:after {
+        background: #f2f2f3;
+    }
+
+    .tour--controls__right .tour--arrow:after {
+        box-shadow: -2px 0 8px rgba(59, 64, 69, .1);
+        left: 200%;
+    }
+
+    .is-active .tour--arrow:after {
+        left: 0;
+    }
+
+    .tour--controls__right .is-active .tour--arrow:after {
+        left: 100%;
+    }
+</style>
 
 
 

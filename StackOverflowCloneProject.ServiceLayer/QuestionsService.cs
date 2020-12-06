@@ -40,7 +40,10 @@ namespace StackOverflowCloneProject.ServiceLayer
 
         public void UpdateQuestionDetails(EditQuestionViewModel qvm)
         {
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EditQuestionViewModel, Question>(); cfg.IgnoreUnmapped(); });
+            var config = new MapperConfiguration(cfg => { 
+                cfg.CreateMap<EditQuestionViewModel, Question>(); 
+                cfg.IgnoreUnmapped(); 
+            });
             IMapper mapper = config.CreateMapper();
             Question q = mapper.Map<EditQuestionViewModel, Question>(qvm);
             qr.UpdateQuestionDetails(q);
@@ -66,10 +69,22 @@ namespace StackOverflowCloneProject.ServiceLayer
         public List<QuestionViewModel> GetQuestions()
         {
             List<Question> q = qr.GetQuestions();
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Question, QuestionViewModel>(); cfg.IgnoreUnmapped(); });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Question, QuestionViewModel>(); 
+                cfg.IgnoreUnmapped();
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.IgnoreUnmapped(); 
+                cfg.CreateMap<Category, CategoryViewModel>();
+            });
             IMapper mapper = config.CreateMapper();
-            List<QuestionViewModel> qvm = mapper.Map<List<Question>, List<QuestionViewModel>>(q);
-            return qvm;
+            try
+            {
+                List<QuestionViewModel> qvm = mapper.Map<List<Question>, List<QuestionViewModel>>(q);
+                return qvm;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public QuestionViewModel GetQuestionByQuestionID(int QuestionID, int UserID = 0)
@@ -78,7 +93,13 @@ namespace StackOverflowCloneProject.ServiceLayer
             QuestionViewModel qvm = null;
             if (q != null)
             {
-                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Question, QuestionViewModel>(); cfg.IgnoreUnmapped(); });
+                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Question, QuestionViewModel>(); 
+                    cfg.IgnoreUnmapped();
+                    cfg.CreateMap<User, UserViewModel>();
+                    cfg.IgnoreUnmapped();
+                    cfg.CreateMap<Category, CategoryViewModel>();
+                });
+
                 IMapper mapper = config.CreateMapper();
                 qvm = mapper.Map<Question, QuestionViewModel>(q);
 

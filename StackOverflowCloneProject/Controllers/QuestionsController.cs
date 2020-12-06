@@ -68,6 +68,7 @@ namespace StackOverflowCloneProject.Controllers
             }
         }
 
+
         public ActionResult Create()
         {
             List<CategoryViewModel> categories = this.cs.GetCategories();

@@ -3,21 +3,248 @@
 @{
     ViewBag.Title = "Questions";
 }
+<div class="container">
 
-<div class="row">
-    <div class="col-sm-12">
-        <table class="table">
-            @foreach (var item in Model)
-            {
-                Html.RenderPartial("Question", item);
-            }
-        </table>
-        @if (Session["CurrentUserName"] != null)
-        {
-            <a href="/questions/create" class="btn btn-primary">Add Question</a>
-        }
+    <div id="left-sidebar" data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar ps-relative">
+        <div class="left-sidebar--sticky-container js-sticky-leftnav">
+            <nav role="navigation">
+                <ol class="nav-links">
+                    <li class=" youarehere">
+                        <a href="/"
+                           class="pl8 js-gps-track nav-links--link"
+                           data-gps-track="top_nav.click({is_current:true, location:1, destination:8})">
+                            <div class="grid ai-center">
+                                <div class="grid--cell truncate">
+                                    Home
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <ol class="nav-links">
+                            <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Public</li>
+
+                            <li class="">
+                                <a id="nav-questions"
+                                   href="/"
+                                   class="pl8 js-gps-track nav-links--link -link__with-icon"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:1})">
+                                    <svg aria-hidden="true" class="svg-icon iconGlobe" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 100 16A8 8 0 009 1zM8 15.32a6.4 6.4 0 01-5.23-7.75L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.4 6.4 0 012.32 10.24v.01z" /></svg>                    <span class="-link--channel-name">Stack Overflow</span>
+                                </a>
+                            </li>
+
+
+                            <li class="">
+                                <a id="nav-tags"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:2})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Tags
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="nav-users"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:3})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Users
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Find a Job</li>
+                            <li class="">
+                                <a id="nav-jobs"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:6})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Jobs
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="nav-companies"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:12})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Companies
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ol>
+                    </li>
+
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div id="content" class="snippet-hidden">
+
+        <div class="grid">
+            <h1 class="grid--cell fl1 fs-headline1">
+                All Questions
+            </h1>
+            <div class="ml12 aside-cta grid--cell print:d-none">
+                <a href="/questions/create" class="ws-nowrap s-btn s-btn__primary">
+                    Ask Question
+                </a>
+
+            </div>
+        </div>
+        <div class="grid ai-center mb16">
+            <div class="grid--cell fl1 fs-body3"></div>
+            <div class="grid--cell">
+                <div class=" grid s-btn-group js-filter-btn">
+                    <a class="youarehere is-selected grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions that may be of interest to you based on your history and tag preference" data-value="interesting" data-shortcut="">
+                        Interesting
+                    </a>
+                    <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with an active bounty" data-value="bounties" data-shortcut="B">
+                        Bountied
+                    </a>
+                    <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with the most views, answers, and votes over the last few days" data-value="hot" data-shortcut="H">
+                        Hot
+                    </a>
+                    <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with the most views, answers, and votes this week" data-value="week" data-shortcut="W">
+                        Week
+                    </a>
+                    <a class="grid--cell s-btn s-btn__muted s-btn__outlined" href="/" data-nav-xhref="" title="Questions with the most views, answers, and votes this month" data-value="month" data-shortcut="M">
+                        Month
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="qlist-wrapper" class="flush-left">
+            <div id="question-mini-list">
+                <table class="table">
+                    @foreach (var item in Model)
+                    {
+                        Html.RenderPartial("Question", item);
+                    }
+
+                </table>
+               
+            </div>
+        </div>
+
+    </div>
+    <div id="sidebar">
+        <div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
+            <ul class="d-block p0 m0">
+                <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                    The Overflow Blog
+                </div>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z" /></svg>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/12/03/tips-to-stay-focused-and-finish-your-hobby-project/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 0 })">Tips to stay focused and finish your hobby project</a>
+                    </div>
+                </li>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z" /></svg>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/12/04/podcast-292-goodbye-to-flash-well-see-you-in-rust/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 1 })">Podcast 292: Goodbye to Flash, we’ll see you in Rust</a>
+                    </div>
+                </li>
+                <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                    Featured on Meta
+                </div>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/356997/feature-preview-table-support&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 3, position: 2 })">Feature Preview: Table Support</a>
+                    </div>
+                </li>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" title="MAINTENANCE WARNING: Possible downtime early morning Dec 2, 4, and 9 UTC (8:30PM NYC-time on Dec 1, 3, and 8, 2020)" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/357034/maintenance-warning-possible-downtime-early-morning-dec-2-4-and-9-utc-830pm&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 3, position: 3 })">MAINTENANCE WARNING: Possible downtime early morning Dec 2, 4, and 9 UTC&hellip;</a>
+                    </div>
+                </li>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackoverflow.com/questions/403218/congratulations-vonc-for-reaching-a-million-reputation&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 6, position: 4 })">Congratulations VonC for reaching a million reputation</a>
+                    </div>
+                </li>
+                <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                    Hot Meta Posts
+                </div>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <span class="fc-black-500" title="Vote score (upvotes - downvotes)">32</span>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Hot Meta Posts&quot;,&quot;https://meta.stackoverflow.com/questions/403357/what-can-i-do-to-ask-better-questions-on-meta&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 7, position: 5 })">What can I do to ask better questions on Meta?</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="s-sidebarwidget mb16 module" data-controller="se-uql-list">
+            <div class="s-sidebarwidget--header">Custom Filters</div>
+            <ul class="s-sidebarwidget--content s-sidebarwidget__items">
+                <li class="s-sidebarwidget--item fc-black-300">
+                    <a class="s-btn s-btn__link" data-action="se-uql-list#editCurrent" href="/">Create a custom filter</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="js-sidebar-zone" style="min-height: 735px;">
+            <style>
+            </style>
+            <div class="js-zone-container zone-container-sidebar">
+                <div id="dfp-tsb" class="everyonelovesstackoverflow everyoneloves__top-sidebar"></div>
+                <div class="js-report-ad-button-container " style="width: 300px"></div>
+            </div>
+
+            <div class="js-zone-container zone-container-sidebar">
+                <div id="dfp-msb" class="everyonelovesstackoverflow everyoneloves__mid-sidebar"></div>
+                <div class="js-report-ad-button-container " style="width: 300px"></div>
+            </div>
+        </div>
+
     </div>
 </div>
+
+    @*<div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                @foreach (var item in Model)
+                {
+                    Html.RenderPartial("Question", item);
+                }
+            </table>
+            @if (Session["CurrentUserName"] != null)
+            {
+                <a href="/questions/create" class="btn btn-primary">Add Question</a>
+            }
+        </div>
+    </div>*@
 
 
 

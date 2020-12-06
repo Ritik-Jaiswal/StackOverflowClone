@@ -4,6 +4,103 @@
     ViewBag.Title = "Create Question";
 }
 
+<div class="container">
+    <div id="content" class="pt0 snippet-hidden">
+        <div class="grid ai-center py24 bg-no-repeat bg-right-bottom wide:bg-image-ask-v2 wide:h-ask-v2-background">
+            <div class="fs-headline1">
+                Ask a public question
+            </div>
+        </div>
+        
+        <div class="grid ai-start jc-space-between md:fd-column md:ai-stretch">
+            <div class="grid--cell fl1 wmn0">
+                <form id="post-form"
+                      class="post-form js-post-form needs-validation"
+                      novalidate="novalidate"
+                      action="/questions/create"
+                      method="post"
+                      data-validation-warnings=""
+                      data-validation-errors=""
+                      data-form-type="question"
+                      data-has-answer="false"
+                      data-delay-validation="true"
+                      data-required-tags=""
+                      data-force-heartbeat-at-body-length="220"
+                      data-enable-analytics="true"
+                      data-enable-warning-analytics="true"
+                      data-inbox-subscription="2"
+                      data-referrer="0">
+                    @Html.AntiForgeryToken()
+                    <div id="question-form">
+                        <div class="bg-white bar-sm bs-md p16 ba bc-black-100">
+                            <div id="post-editor" class="post-editor js-post-editor mt0 mb16">
+                                <div class="ps-relative">
+                                    <label class="s-label mb4 d-block" for="wmd-input">
+                                        Question
+                                        <p class="s-description mt2">Include all the information someone would need to answer your question</p>
+                                    </label>
+                                    <div class="wmd-container mb8">
+                                        <div id="wmd-button-bar" class="wmd-button-bar btr-sm mt0"></div>
+                                        <div class="js-stacks-validation">
+                                            <div class="ps-relative">
+                                                <textarea id="txtQuestionName"
+                                                          name="QuestionName"
+                                                          class="wmd-input s-input bar0 js-post-body-field"
+                                                          data-post-type-id="1"
+                                                          cols="92" rows="15"
+                                                          tabindex="101"
+                                                          data-min-length=""
+                                                          required="required"
+                                                          autofocus="autofocus"></textarea>
+                                            </div>
+                                            <div class="s-input-message mt4 d-none js-stacks-validation-message"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ps-relative" id="tag-editor">
+                                <div class="ps-relative">
+                                    <div class="form-item p0 js-stacks-validation js-tag-editor-container">
+                                        <div class="grid ai-center jc-space-between">
+                                            <label for="tagnames" class="s-label mb4 d-block grid--cell fl1">
+                                                Tags
+                                            </label>
+
+                                        </div>
+                                        <div class="ps-relative">
+                                            <select class="form-control" id="drpCategory" name="CategoryID" required="required">
+                                                <option value="">Please Select</option>
+                                                @foreach (var item in ViewBag.Categories)
+                                                {
+                                                    <option value="@item.CategoryID">@item.CategoryName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="js-visible-before-review">
+                        <div class="grid gsx gs4 ai-center mt32">
+                            <button class="grid--cell s-btn s-btn__primary s-btn__icon ws-nowrap js-begin-review-button js-gps-track"
+                                    type="submit" 
+                                    tabindex="120"
+                                    >
+                                Ask your question
+                            </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div class="row">
     <div class="col-sm-12">
         <h1>Create Question</h1>

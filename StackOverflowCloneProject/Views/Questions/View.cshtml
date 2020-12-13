@@ -3,165 +3,499 @@
 @{
     ViewBag.Title = "View Question";
 }
+<div class="container">
 
-<div class="row">
-    <div class="col-sm-12">
+    <div id="left-sidebar" data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar ps-relative">
+        <div class="left-sidebar--sticky-container js-sticky-leftnav">
+            <nav role="navigation">
+                <ol class="nav-links">
+                    <li class=" youarehere">
+                        <a href="/"
+                           class="pl8 js-gps-track nav-links--link"
+                           data-gps-track="top_nav.click({is_current:true, location:1, destination:8})">
+                            <div class="grid ai-center">
+                                <div class="grid--cell truncate">
+                                    Home
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <ol class="nav-links">
+                            <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Public</li>
 
-        <div class="form-group form-row">
-            <div class="col-sm-10 offset-sm-2">
-                <h3>@Model.QuestionName</h3>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <span class="badge badge-info">@Model.Category.CategoryName</span>
+                            <li class="">
+                                <a id="nav-questions"
+                                   href="/"
+                                   class="pl8 js-gps-track nav-links--link -link__with-icon"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:1})">
+                                    <svg aria-hidden="true" class="svg-icon iconGlobe" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 100 16A8 8 0 009 1zM8 15.32a6.4 6.4 0 01-5.23-7.75L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.4 6.4 0 012.32 10.24v.01z" /></svg>                    <span class="-link--channel-name">Stack Overflow</span>
+                                </a>
+                            </li>
+
+
+                            <li class="">
+                                <a id="nav-tags"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:2})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Tags
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="nav-users"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:3})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Users
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Find a Job</li>
+                            <li class="">
+                                <a id="nav-jobs"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:6})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Jobs
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="nav-companies"
+                                   href="/"
+                                   class=" js-gps-track nav-links--link"
+                                   data-gps-track="top_nav.click({is_current:false, location:1, destination:12})">
+                                    <div class="grid ai-center">
+                                        <div class="grid--cell truncate">
+                                            Companies
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ol>
+                    </li>
+
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="form-group form-row">
+                <div class="col-sm-10 offset-sm-2">
+                    <h3>@Model.QuestionName</h3>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="badge badge-info">@Model.Category.CategoryName</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="text-info">
+                                @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.UserID)
+                                {
+                                    @:by @Model.User.Name
+                                }
+                                else
+                                {
+                                    @:by you
+                                }
+                            </span>
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="text-success">by @Model.QuestionDateAndTime</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="badge badge-pill badge-success col-2">
+                                @Model.ViewsCount
+                            </span>
+                            Views
+                        </div>
                     </div>
+
+                    @if (Model.AnswersCount == 0)
+                    {
+                        <p class="text-danger">No answers yet!</p>
+                    }
+                </div>
+            </div>
+
+            @for (int i = 0; i < Model.Answers.Count; i++)
+            {
+                <div class="form-group form-row">
                     <div class="col-sm-2">
-                        <span class="text-info">
-                            @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.UserID)
+                        <span class="badge badge-secondary col-2 votescount">
+                            @Model.Answers[i].VotesCount
+                        </span>
+                        Votes
+
+                        @if (Session["CurrentUserName"] != null && Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
+                        {
+                            if (Model.Answers[i].CurrentUserVoteType == 1)
                             {
-                                @:by @Model.User.Name
+                                <img src="~/Images/up-color.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                                <img src="~/Images/down-empty.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                            }
+                            else if (Model.Answers[i].CurrentUserVoteType == -1)
+                            {
+                                <img src="~/Images/up-empty.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                                <img src="~/Images/down-color.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
                             }
                             else
                             {
-                                @:by you
+                                <img src="~/Images/up-empty.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                                <img src="~/Images/down-empty.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
                             }
-                        </span>
-                    </div>
-                    <div class="col-sm-3">
-                        <span class="text-success">by @Model.QuestionDateAndTime</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <span class="badge badge-pill badge-success col-2">
-                            @Model.ViewsCount
-                        </span>
-                        Views
-                    </div>
-                </div>
-
-                @if (Model.AnswersCount == 0)
-                {
-                    <p class="text-danger">No answers yet!</p>
-                }
-            </div>
-        </div>
-
-        @for (int i = 0; i < Model.Answers.Count; i++)
-        {
-            <div class="form-group form-row">
-                <div class="col-sm-2">
-                    <span class="badge badge-secondary col-2 votescount">
-                        @Model.Answers[i].VotesCount
-                    </span>
-                    Votes
-
-                    @if (Session["CurrentUserName"] != null && Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
-                    {
-                        if (Model.Answers[i].CurrentUserVoteType == 1)
-                        {
-                            <img src="~/Images/up-color.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
-                            <img src="~/Images/down-empty.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
                         }
-                        else if (Model.Answers[i].CurrentUserVoteType == -1)
+                    </div>
+
+                    <div class="col-sm-7">
+                        @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
                         {
-                            <img src="~/Images/up-empty.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
-                            <img src="~/Images/down-color.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                            @Model.Answers[i].AnswerText
                         }
                         else
                         {
-                            <img src="~/Images/up-empty.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
-                            <img src="~/Images/down-empty.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
-                        }
-                    }
-                </div>
+                            <p class="answer">@Model.Answers[i].AnswerText</p>
+                            <button class="btn btn-info editbutton">Edit</button>
 
-                <div class="col-sm-7">
-                    @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
-                    {
-                        @Model.Answers[i].AnswerText
-                    }
-                    else
-                    {
-                        <p class="answer">@Model.Answers[i].AnswerText</p>
-                        <button class="btn btn-info editbutton">Edit</button>
+                            <form class="needs-validation hidden" novalidate="novalidate" action="/questions/editanswer" method="post" id="editForm">
+                                <div class="form-group form-row">
+                                    <div class="col-sm-12">
+                                        <h4>Edit your answer</h4>
 
-                        <form class="needs-validation hidden" novalidate="novalidate" action="/questions/editanswer" method="post" id="editForm">
-                            <div class="form-group form-row">
-                                <div class="col-sm-12">
-                                    <h4>Edit your answer</h4>
-
-                                    @Html.AntiForgeryToken()
-                                    <input type="hidden" name="AnswerID" value="@Model.Answers[i].AnswerID" />
-                                    <input type="hidden" name="QuestionID" value="@Model.Answers[i].QuestionID" />
-                                    <div class="form-row">
-                                        <div class="form-group col-sm-12">
-                                            <textarea class="form-control" id="txtAnswer" placeholder="Enter answer" name="AnswerText" required="required">@Model.Answers[i].AnswerText</textarea>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                Please enter answer.
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="AnswerID" value="@Model.Answers[i].AnswerID" />
+                                        <input type="hidden" name="QuestionID" value="@Model.Answers[i].QuestionID" />
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12">
+                                                <textarea class="form-control" id="txtAnswer" placeholder="Enter answer" name="AnswerText" required="required">@Model.Answers[i].AnswerText</textarea>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please enter answer.
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <button type="submit" class="btn btn-primary" data-formid="editForm">Update Answer</button>
+                                        <div class="text-danger">
+                                            @Html.ValidationSummary()
+                                        </div>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary" data-formid="editForm">Update Answer</button>
-                                    <div class="text-danger">
-                                        @Html.ValidationSummary()
-                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    }
-                </div>
+                            </form>
+                        }
+                    </div>
 
-                <div class="col-sm-1">
-                    @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
-                    {
-                        @:by @Model.Answers[i].User.Name
-                    }
-                    else
-                    {
-                        @:by you
-                    }
-                </div>
-                <div class="col-sm-2">
-                    on @Model.Answers[i].AnswerDateAndTime
-                </div>
-            </div>
-        }
-
-        @if (Session["CurrentUsername"] != null)
-        {
-            <form class="needs-validation" novalidate="novalidate" action="/questions/addanswer" method="post" id="newForm">
-                <div class="form-group form-row">
-                    <div class="col-sm-12">
-                        <h4>Add your answer</h4>
-
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="QuestionID" value="@Model.QuestionID" />
-                        <div class="form-row">
-                            <div class="form-group col-sm-12">
-                                <textarea class="form-control" id="txtAnswer" placeholder="Enter answer" name="AnswerText" required="required" data-pattern="[A-z0-9 ,-]{1,}"></textarea>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please enter answer.
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" data-formid="newForm">Add Answer</button>
-                        <div class="text-danger">
-                            @Html.ValidationSummary()
-                        </div>
+                    <div class="col-sm-1">
+                        @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
+                        {
+                            @:by @Model.Answers[i].User.Name
+                        }
+                        else
+                        {
+                            @:by you
+                        }
+                    </div>
+                    <div class="col-sm-2">
+                        on @Model.Answers[i].AnswerDateAndTime
                     </div>
                 </div>
-            </form>
-        }
+            }
+
+            @if (Session["CurrentUsername"] != null)
+            {
+                <form class="needs-validation" novalidate="novalidate" action="/questions/addanswer" method="post" id="newForm">
+                    <div class="form-group form-row">
+                        <div class="col-sm-12">
+                            <h4>Add your answer</h4>
+
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="QuestionID" value="@Model.QuestionID" />
+                            <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <textarea class="form-control" id="txtAnswer" placeholder="Enter answer" name="AnswerText" required="required" data-pattern="[A-z0-9 ,-]{1,}"></textarea>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter answer.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" data-formid="newForm">Add Answer</button>
+                            <div class="text-danger">
+                                @Html.ValidationSummary()
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+
+
+
+    <div id="sidebar">
+        <div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
+            <ul class="d-block p0 m0">
+                <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                    The Overflow Blog
+                </div>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z" /></svg>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/12/03/tips-to-stay-focused-and-finish-your-hobby-project/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 0 })">Tips to stay focused and finish your hobby project</a>
+                    </div>
+                </li>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z" /></svg>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/12/04/podcast-292-goodbye-to-flash-well-see-you-in-rust/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 1 })">Podcast 292: Goodbye to Flash, we’ll see you in Rust</a>
+                    </div>
+                </li>
+                <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                    Featured on Meta
+                </div>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/356997/feature-preview-table-support&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 3, position: 2 })">Feature Preview: Table Support</a>
+                    </div>
+                </li>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" title="MAINTENANCE WARNING: Possible downtime early morning Dec 2, 4, and 9 UTC (8:30PM NYC-time on Dec 1, 3, and 8, 2020)" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/357034/maintenance-warning-possible-downtime-early-morning-dec-2-4-and-9-utc-830pm&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 3, position: 3 })">MAINTENANCE WARNING: Possible downtime early morning Dec 2, 4, and 9 UTC&hellip;</a>
+                    </div>
+                </li>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackoverflow.com/questions/403218/congratulations-vonc-for-reaching-a-million-reputation&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 6, position: 4 })">Congratulations VonC for reaching a million reputation</a>
+                    </div>
+                </li>
+                <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                    Hot Meta Posts
+                </div>
+                <li class="s-sidebarwidget--item grid px16">
+                    <div class="grid--cell1 fl-shrink0">
+                        <span class="fc-black-500" title="Vote score (upvotes - downvotes)">32</span>
+                    </div>
+                    <div class="grid--cell">
+                        <a href="/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Hot Meta Posts&quot;,&quot;https://meta.stackoverflow.com/questions/403357/what-can-i-do-to-ask-better-questions-on-meta&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 7, position: 5 })">What can I do to ask better questions on Meta?</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="s-sidebarwidget mb16 module" data-controller="se-uql-list">
+            <div class="s-sidebarwidget--header">Custom Filters</div>
+            <ul class="s-sidebarwidget--content s-sidebarwidget__items">
+                <li class="s-sidebarwidget--item fc-black-300">
+                    <a class="s-btn s-btn__link" data-action="se-uql-list#editCurrent" href="/">Create a custom filter</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="js-sidebar-zone" style="min-height: 735px;">
+            <style>
+            </style>
+            <div class="js-zone-container zone-container-sidebar">
+                <div id="dfp-tsb" class="everyonelovesstackoverflow everyoneloves__top-sidebar"></div>
+                <div class="js-report-ad-button-container " style="width: 300px"></div>
+            </div>
+
+            <div class="js-zone-container zone-container-sidebar">
+                <div id="dfp-msb" class="everyonelovesstackoverflow everyoneloves__mid-sidebar"></div>
+                <div class="js-report-ad-button-container " style="width: 300px"></div>
+            </div>
+        </div>
+
     </div>
 </div>
+    <div class="row">
+        <div class="col-sm-12">
 
-<script>
+            <div class="form-group form-row">
+                <div class="col-sm-10 offset-sm-2">
+                    <h3>@Model.QuestionName</h3>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="badge badge-info">@Model.Category.CategoryName</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="text-info">
+                                @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.UserID)
+                                {
+                                    @:by @Model.User.Name
+                                }
+                                else
+                                {
+                                    @:by you
+                                }
+                            </span>
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="text-success">by @Model.QuestionDateAndTime</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="badge badge-pill badge-success col-2">
+                                @Model.ViewsCount
+                            </span>
+                            Views
+                        </div>
+                    </div>
+
+                    @if (Model.AnswersCount == 0)
+                    {
+                        <p class="text-danger">No answers yet!</p>
+                    }
+                </div>
+            </div>
+
+            @for (int i = 0; i < Model.Answers.Count; i++)
+            {
+                <div class="form-group form-row">
+                    <div class="col-sm-2">
+                        <span class="badge badge-secondary col-2 votescount">
+                            @Model.Answers[i].VotesCount
+                        </span>
+                        Votes
+
+                        @if (Session["CurrentUserName"] != null && Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
+                        {
+                            if (Model.Answers[i].CurrentUserVoteType == 1)
+                            {
+                                <img src="~/Images/up-color.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                                <img src="~/Images/down-empty.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                            }
+                            else if (Model.Answers[i].CurrentUserVoteType == -1)
+                            {
+                                <img src="~/Images/up-empty.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                                <img src="~/Images/down-color.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                            }
+                            else
+                            {
+                                <img src="~/Images/up-empty.png" class="btnUpVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                                <img src="~/Images/down-empty.png" class="btnDownVote" style="cursor:pointer" width="24px" data-answerid="@Model.Answers[i].AnswerID" />
+                            }
+                        }
+                    </div>
+
+                    <div class="col-sm-7">
+                        @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
+                        {
+                            @Model.Answers[i].AnswerText
+                        }
+                        else
+                        {
+                            <p class="answer">@Model.Answers[i].AnswerText</p>
+                            <button class="btn btn-info editbutton">Edit</button>
+
+                            <form class="needs-validation hidden" novalidate="novalidate" action="/questions/editanswer" method="post" id="editForm">
+                                <div class="form-group form-row">
+                                    <div class="col-sm-12">
+                                        <h4>Edit your answer</h4>
+
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="AnswerID" value="@Model.Answers[i].AnswerID" />
+                                        <input type="hidden" name="QuestionID" value="@Model.Answers[i].QuestionID" />
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12">
+                                                <textarea class="form-control" id="txtAnswer" placeholder="Enter answer" name="AnswerText" required="required">@Model.Answers[i].AnswerText</textarea>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please enter answer.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary" data-formid="editForm">Update Answer</button>
+                                        <div class="text-danger">
+                                            @Html.ValidationSummary()
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    </div>
+
+                    <div class="col-sm-1">
+                        @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Answers[i].UserID)
+                        {
+                            @:by @Model.Answers[i].User.Name
+                        }
+                        else
+                        {
+                            @:by you
+                        }
+                    </div>
+                    <div class="col-sm-2">
+                        on @Model.Answers[i].AnswerDateAndTime
+                    </div>
+                </div>
+            }
+
+            @if (Session["CurrentUsername"] != null)
+            {
+                <form class="needs-validation" novalidate="novalidate" action="/questions/addanswer" method="post" id="newForm">
+                    <div class="form-group form-row">
+                        <div class="col-sm-12">
+                            <h4>Add your answer</h4>
+
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="QuestionID" value="@Model.QuestionID" />
+                            <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <textarea class="form-control" id="txtAnswer" placeholder="Enter answer" name="AnswerText" required="required" data-pattern="[A-z0-9 ,-]{1,}"></textarea>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter answer.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" data-formid="newForm">Add Answer</button>
+                            <div class="text-danger">
+                                @Html.ValidationSummary()
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+
+    <script>
     $(".btnUpVote").click(function ()
     {
         var UpBtn = $(this);
@@ -207,14 +541,13 @@
             });
         }
     });
-</script>
+    </script>
 
-<script>
-    $(".editbutton").click(function ()
-    {
-        $(this).parent().find(".needs-validation").show();
-        $(this).hide();
-        $(this).parent().find(".answer").hide();
-    });
-</script>
+    <script>
+        $(".editbutton").click(function () {
+            $(this).parent().find(".needs-validation").show();
+            $(this).hide();
+            $(this).parent().find(".answer").hide();
+        });
+    </script>
 
